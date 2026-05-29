@@ -11,7 +11,7 @@ import { useRef, useEffect, useState } from "react"
 export default function Index() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(true)
   const touchStartY = useRef(0)
   const touchStartX = useRef(0)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
@@ -177,7 +177,7 @@ export default function Index() {
 
       <div
         ref={shaderContainerRef}
-        className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+        className="fixed inset-0 z-0 opacity-0 pointer-events-none"
         style={{ contain: "strict" }}
       >
         <Shader className="h-full w-full">
@@ -207,7 +207,6 @@ export default function Index() {
             opacity={0.97}
           />
         </Shader>
-        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       <nav
